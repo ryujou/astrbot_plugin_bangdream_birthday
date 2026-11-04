@@ -4,7 +4,7 @@
 
 **AstrBot ≥4.28、<5 · OneBot v11 / aiocqhttp · 无需配置大模型**
 
-[安装](#安装) · [快速开始](#快速开始) · [配置](#配置) · [常见问题](#常见问题) · [开发与测试](#开发与测试)
+[安装](#安装) · [快速开始](#快速开始) · [配置](#配置) · [常见问题](#常见问题)
 
 ## 功能
 
@@ -192,28 +192,6 @@ QQ 会生成40、100像素等缩略图。主名字和配色优先供小图识别
 
 日常生成使用本地生日表、字体和 SVG 模板。首次获取原头像访问 QQ 头像地址，修改群名、头像通过已连接的 OneBot 客户端；不调用聊天模型或图片生成服务。
 
-## 开发与测试
-
-| 文件或函数 | 职责 |
-| --- | --- |
-| `calendar_from_rows` / `import_calendar` | 表格解析与日期校验 |
-| `load_group_rules` / `group_name_for_day` | 配置合并与群名计算 |
-| `render_portrait` / `portrait.html` | 浏览器渲染，不提交 QQ 更新 |
-| `sync_group_portrait` | 原图、活动状态和 QQ 头像更新 |
-| `BanGDreamBirthdayPlugin` | AstrBot 接入、后台任务生命周期与调度 |
-
-QQ client 通过参数传入，解析和群名计算可独立测试。插件不导入其他生日插件，也不共享其配置或数据目录。修改头像模板并需要刷新当天头像时，应更新 `FRAME_VERSION`；插件版本号本身不会强制换图。
-
-在已安装 AstrBot 和本插件依赖的 Python 环境中，从源码目录运行：
-
-```sh
-python tests/test_behavior.py .
-ruff check main.py presentation.py tests
-ruff format --check main.py presentation.py tests
-```
-
-26项测试覆盖生日输入格式、CSV/XLSX、非法日期、分群配置、头像轮换恢复、失败重试及调度异常分支。测试使用临时目录和模拟 QQ 客户端，不修改真实群头像；这不代表所有分支100%覆盖。默认样式已完成120名角色及声优的浏览器渲染检查。实群验证群名、头像提交、通知开关及去重；不等于未来日期的定时触发已验证。
-
 反馈问题时请提供 AstrBot 版本、OneBot 实现、复现步骤及脱敏错误日志，不要附带登录凭据、原始群配置或私人头像。
 
 ## 来源与许可
@@ -223,5 +201,3 @@ ruff format --check main.py presentation.py tests
 原创代码与原创文档采用 [MIT License](LICENSE)，允许使用、修改和再分发，需保留许可证及版权声明。MIT 同样允许商业使用；本项目的非盈利粉丝用途不构成对代码许可证的额外限制。
 
 第三方字体、游戏素材与数据不纳入本项目 MIT 授权，仍适用各自的许可及权利归属，详见 [第三方资源说明](THIRD_PARTY_NOTICES.md)。
-
-维护者投稿流程及当前发布条件见 [PUBLISHING.md](PUBLISHING.md)。
