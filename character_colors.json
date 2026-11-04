@@ -1,0 +1,827 @@
+{
+  "updated": "2026-11-04",
+  "sources": {
+    "colors": "https://bangdream.tano.asia/colors/colors/",
+    "game_colors": "https://bestdori.com/api/characters/all.2.json",
+    "our_notes_colors": "https://wikiwiki.jp/on_database/バンド・キャラクター イメージカラー",
+    "birthdays": "https://bangdream.tano.asia/birthdays/birthdays/",
+    "cast": [
+      "https://bang-dream.com/artist/poppinparty/",
+      "https://bang-dream.com/artist/afterglow/",
+      "https://bang-dream.com/artist/pastel-palettes/",
+      "https://bang-dream.com/artist/roselia/",
+      "https://bang-dream.com/artist/hello-happy-world/",
+      "https://bang-dream.com/artist/morfonica/",
+      "https://bang-dream.com/artist/raise-a-suilen/",
+      "https://bang-dream.com/artist/mygo/",
+      "https://bang-dream.com/artist/avemujica/",
+      "https://bang-dream-on.bushimo.jp/character/millsage/",
+      "https://bang-dream-on.bushimo.jp/character/ikka-dumb-rock/",
+      "https://anime.bang-dream.com/avemujica/character/mana/",
+      "https://bushiroad.co.jp/media/964"
+    ]
+  },
+  "characters": [
+    {
+      "name": "户山香澄",
+      "band": "Poppin'Party",
+      "color": "#FF5522",
+      "birthday": "07-14",
+      "name_ja": "戸山 香澄",
+      "name_en": "Kasumi Toyama",
+      "display_name": "KASUMI"
+    },
+    {
+      "name": "花园多惠",
+      "band": "Poppin'Party",
+      "color": "#0077DD",
+      "birthday": "12-04",
+      "name_ja": "花園 たえ",
+      "name_en": "Tae Hanazono",
+      "display_name": "TAE"
+    },
+    {
+      "name": "牛込里美",
+      "band": "Poppin'Party",
+      "color": "#FF55BB",
+      "birthday": "03-23",
+      "name_ja": "牛込 りみ",
+      "name_en": "Rimi Ushigome",
+      "display_name": "RIMI"
+    },
+    {
+      "name": "山吹沙绫",
+      "band": "Poppin'Party",
+      "color": "#FFCC11",
+      "birthday": "05-19",
+      "name_ja": "山吹 沙綾",
+      "name_en": "Saya Yamabuki",
+      "display_name": "SAYA"
+    },
+    {
+      "name": "市谷有咲",
+      "band": "Poppin'Party",
+      "color": "#AA66DD",
+      "birthday": "10-27",
+      "name_ja": "市ヶ谷 有咲",
+      "name_en": "Arisa Ichigaya",
+      "display_name": "ARISA"
+    },
+    {
+      "name": "美竹兰",
+      "band": "Afterglow",
+      "color": "#EE0022",
+      "birthday": "04-10",
+      "name_ja": "美竹 蘭",
+      "name_en": "Ran Mitake",
+      "display_name": "RAN"
+    },
+    {
+      "name": "青叶摩卡",
+      "band": "Afterglow",
+      "color": "#00CCAA",
+      "birthday": "09-03",
+      "name_ja": "青葉 モカ",
+      "name_en": "Moca Aoba",
+      "display_name": "MOCA"
+    },
+    {
+      "name": "上原绯玛丽",
+      "band": "Afterglow",
+      "color": "#FF9999",
+      "birthday": "10-23",
+      "name_ja": "上原 ひまり",
+      "name_en": "Himari Uehara",
+      "display_name": "HIMARI"
+    },
+    {
+      "name": "宇田川巴",
+      "band": "Afterglow",
+      "color": "#BB0033",
+      "birthday": "04-15",
+      "name_ja": "宇田川 巴",
+      "name_en": "Tomoe Udagawa",
+      "display_name": "TOMOE"
+    },
+    {
+      "name": "羽泽鸫",
+      "band": "Afterglow",
+      "color": "#FFEE88",
+      "birthday": "01-07",
+      "name_ja": "羽沢 つぐみ",
+      "name_en": "Tsugumi Hazawa",
+      "display_name": "TSUGUMI"
+    },
+    {
+      "name": "丸山彩",
+      "band": "Pastel＊Palettes",
+      "color": "#FF88BB",
+      "birthday": "12-27",
+      "name_ja": "丸山 彩",
+      "name_en": "Aya Maruyama",
+      "display_name": "AYA"
+    },
+    {
+      "name": "冰川日菜",
+      "band": "Pastel＊Palettes",
+      "color": "#55DDEE",
+      "birthday": "03-20",
+      "name_ja": "氷川 日菜",
+      "name_en": "Hina Hikawa",
+      "display_name": "HINA"
+    },
+    {
+      "name": "白鹭千圣",
+      "band": "Pastel＊Palettes",
+      "color": "#FFEEAA",
+      "birthday": "04-06",
+      "name_ja": "白鷺 千聖",
+      "name_en": "Chisato Shirasagi",
+      "display_name": "CHISATO"
+    },
+    {
+      "name": "大和麻弥",
+      "band": "Pastel＊Palettes",
+      "color": "#99DD88",
+      "birthday": "11-03",
+      "name_ja": "大和 麻弥",
+      "name_en": "Maya Yamato",
+      "display_name": "MAYA"
+    },
+    {
+      "name": "若宫伊芙",
+      "band": "Pastel＊Palettes",
+      "color": "#DDBBFF",
+      "birthday": "06-27",
+      "name_ja": "若宮 イヴ",
+      "name_en": "Eve Wakamiya",
+      "display_name": "EVE"
+    },
+    {
+      "name": "凑友希那",
+      "band": "Roselia",
+      "color": "#881188",
+      "birthday": "10-26",
+      "name_ja": "湊 友希那",
+      "name_en": "Yukina Minato",
+      "display_name": "YUKINA"
+    },
+    {
+      "name": "冰川纱夜",
+      "band": "Roselia",
+      "color": "#00AABB",
+      "birthday": "03-20",
+      "name_ja": "氷川 紗夜",
+      "name_en": "Sayo Hikawa",
+      "display_name": "SAYO"
+    },
+    {
+      "name": "今井莉莎",
+      "band": "Roselia",
+      "color": "#DD2200",
+      "birthday": "08-25",
+      "name_ja": "今井 リサ",
+      "name_en": "Lisa Imai",
+      "display_name": "LISA"
+    },
+    {
+      "name": "宇田川亚子",
+      "band": "Roselia",
+      "color": "#DD0088",
+      "birthday": "07-03",
+      "name_ja": "宇田川 あこ",
+      "name_en": "Ako Udagawa",
+      "display_name": "AKO"
+    },
+    {
+      "name": "白金燐子",
+      "band": "Roselia",
+      "color": "#BBBBBB",
+      "birthday": "10-17",
+      "name_ja": "白金 燐子",
+      "name_en": "Rinko Shirokane",
+      "display_name": "RINKO"
+    },
+    {
+      "name": "弦卷心",
+      "band": "Hello Happy World",
+      "color": "#FFEE22",
+      "birthday": "08-08",
+      "name_ja": "弦巻 こころ",
+      "name_en": "Kokoro Tsurumaki",
+      "display_name": "KOKORO"
+    },
+    {
+      "name": "濑田薰",
+      "band": "Hello Happy World",
+      "color": "#AA33CC",
+      "birthday": "02-28",
+      "name_ja": "瀬田 薫",
+      "name_en": "Kaoru Seta",
+      "display_name": "KAORU"
+    },
+    {
+      "name": "北泽育美",
+      "band": "Hello Happy World",
+      "color": "#FF9922",
+      "birthday": "07-30",
+      "name_ja": "北沢 はぐみ",
+      "name_en": "Hagumi Kitazawa",
+      "display_name": "HAGUMI"
+    },
+    {
+      "name": "松原花音",
+      "band": "Hello Happy World",
+      "color": "#44DDFF",
+      "birthday": "05-11",
+      "name_ja": "松原 花音",
+      "name_en": "Kanon Matsubara",
+      "display_name": "KANON"
+    },
+    {
+      "name": "奥泽美咲",
+      "band": "Hello Happy World",
+      "color": "#006699",
+      "birthday": "10-01",
+      "name_ja": "奥沢 美咲",
+      "name_en": "Misaki Okusawa",
+      "display_name": "MISAKI"
+    },
+    {
+      "name": "米歇尔",
+      "band": "Hello Happy World",
+      "color": "#DD33CC",
+      "birthday": "10-01",
+      "variant_of": "奥泽美咲",
+      "name_ja": "ミッシェル",
+      "name_en": "Michelle",
+      "display_name": "MICHELLE"
+    },
+    {
+      "name": "仓田真白",
+      "band": "Morfonica",
+      "color": "#6677CC",
+      "birthday": "02-19",
+      "name_ja": "倉田 ましろ",
+      "name_en": "Mashiro Kurata",
+      "display_name": "MASHIRO"
+    },
+    {
+      "name": "桐谷透子",
+      "band": "Morfonica",
+      "color": "#EE6666",
+      "birthday": "12-16",
+      "name_ja": "桐ヶ谷 透子",
+      "name_en": "Toko Kirigaya",
+      "display_name": "TOKO"
+    },
+    {
+      "name": "广町七深",
+      "band": "Morfonica",
+      "color": "#EE7744",
+      "birthday": "06-16",
+      "name_ja": "広町 七深",
+      "name_en": "Nanami Hiromachi",
+      "display_name": "NANAMI"
+    },
+    {
+      "name": "二叶筑紫",
+      "band": "Morfonica",
+      "color": "#EE7788",
+      "birthday": "09-15",
+      "name_ja": "二葉 つくし",
+      "name_en": "Tsukushi Futaba",
+      "display_name": "TSUKUSHI"
+    },
+    {
+      "name": "八潮瑠唯",
+      "band": "Morfonica",
+      "color": "#669988",
+      "birthday": "11-19",
+      "name_ja": "八潮 瑠唯",
+      "name_en": "Rui Yashio",
+      "display_name": "RUI"
+    },
+    {
+      "name": "和奏瑞依",
+      "band": "RAISE A SUILEN",
+      "color": "#CC0000",
+      "birthday": "01-13",
+      "name_ja": "和奏 レイ",
+      "name_en": "Rei Wakana",
+      "display_name": "LAYER"
+    },
+    {
+      "name": "朝日六花",
+      "band": "RAISE A SUILEN",
+      "color": "#AAEE22",
+      "birthday": "07-17",
+      "name_ja": "朝日 六花",
+      "name_en": "Rokka Asahi",
+      "display_name": "LOCK"
+    },
+    {
+      "name": "佐藤益木",
+      "band": "RAISE A SUILEN",
+      "color": "#EEBB44",
+      "birthday": "05-12",
+      "name_ja": "佐藤 ますき",
+      "name_en": "Masuki Sato",
+      "display_name": "MASKING"
+    },
+    {
+      "name": "鳰原令王那",
+      "band": "RAISE A SUILEN",
+      "color": "#FF99BB",
+      "birthday": "03-25",
+      "name_ja": "鳰原 令王那",
+      "name_en": "Reona Nyubara",
+      "display_name": "PAREO",
+      "aliases": [
+        "鸣原令王那"
+      ]
+    },
+    {
+      "name": "珠手知由",
+      "band": "RAISE A SUILEN",
+      "color": "#00BBFF",
+      "birthday": "12-07",
+      "name_ja": "珠手 ちゆ",
+      "name_en": "Chiyu Tamade",
+      "display_name": "CHU²"
+    },
+    {
+      "name": "高松灯",
+      "band": "MyGO!!!!!",
+      "color": "#77BBDD",
+      "birthday": "11-22",
+      "name_ja": "高松 燈",
+      "name_en": "Tomori Takamatsu",
+      "display_name": "TOMORI"
+    },
+    {
+      "name": "千早爱音",
+      "band": "MyGO!!!!!",
+      "color": "#FF8899",
+      "birthday": "09-08",
+      "name_ja": "千早 愛音",
+      "name_en": "Anon Chihaya",
+      "display_name": "ANON"
+    },
+    {
+      "name": "要乐奈",
+      "band": "MyGO!!!!!",
+      "color": "#77DD77",
+      "birthday": "02-22",
+      "name_ja": "要 楽奈",
+      "name_en": "Rana Kaname",
+      "display_name": "RANA"
+    },
+    {
+      "name": "长崎爽世",
+      "band": "MyGO!!!!!",
+      "color": "#FFDD88",
+      "birthday": "05-27",
+      "name_ja": "長崎 そよ",
+      "name_en": "Soyo Nagasaki",
+      "display_name": "SOYO"
+    },
+    {
+      "name": "椎名立希",
+      "band": "MyGO!!!!!",
+      "color": "#7777AA",
+      "birthday": "08-09",
+      "name_ja": "椎名 立希",
+      "name_en": "Taki Shina",
+      "display_name": "TAKI"
+    },
+    {
+      "name": "三角初华",
+      "band": "Ave Mujica",
+      "color": "#BB9955",
+      "birthday": "06-26"
+    },
+    {
+      "name": "若叶睦",
+      "band": "Ave Mujica",
+      "color": "#779977",
+      "birthday": "01-14"
+    },
+    {
+      "name": "八幡海铃",
+      "band": "Ave Mujica",
+      "color": "#335566",
+      "birthday": "04-07"
+    },
+    {
+      "name": "祐天寺若麦",
+      "band": "Ave Mujica",
+      "color": "#AA4477",
+      "birthday": "06-01"
+    },
+    {
+      "name": "丰川祥子",
+      "band": "Ave Mujica",
+      "color": "#7799CC",
+      "birthday": "02-14"
+    },
+    {
+      "name": "仲町阿拉蕾",
+      "band": "夢限大みゅーたいぷ",
+      "color": "#FFEE55",
+      "birthday": "08-16"
+    },
+    {
+      "name": "宫永野乃花",
+      "band": "夢限大みゅーたいぷ",
+      "color": "#FFBBCC",
+      "birthday": "04-17"
+    },
+    {
+      "name": "峰月律",
+      "band": "夢限大みゅーたいぷ",
+      "color": "#4477CC",
+      "birthday": "02-07"
+    },
+    {
+      "name": "藤都子",
+      "band": "夢限大みゅーたいぷ",
+      "color": "#9977CC",
+      "birthday": "09-19"
+    },
+    {
+      "name": "千石由乃",
+      "band": "夢限大みゅーたいぷ",
+      "color": "#EE5577",
+      "birthday": "11-04",
+      "name_ja": "千石 ユノ",
+      "name_en": "Yuno Sengoku",
+      "display_name": "YUNO"
+    },
+    {
+      "name": "汐见萤",
+      "band": "millsage",
+      "color": "#99FF99",
+      "birthday": "03-12"
+    },
+    {
+      "name": "伊泽枣",
+      "band": "millsage",
+      "color": "#FF4444",
+      "birthday": "03-30"
+    },
+    {
+      "name": "琴平凪",
+      "band": "millsage",
+      "color": "#5555FF",
+      "birthday": "12-10"
+    },
+    {
+      "name": "滨崎茉幌",
+      "band": "millsage",
+      "color": "#77FFFF",
+      "birthday": "07-16"
+    },
+    {
+      "name": "和泉朋花",
+      "band": "millsage",
+      "color": "#EE99EE",
+      "birthday": "10-24"
+    },
+    {
+      "name": "须贺蕾叶",
+      "band": "一家Dumb Rock!",
+      "color": "#FF7700",
+      "birthday": "07-28"
+    },
+    {
+      "name": "马桥心玖",
+      "band": "一家Dumb Rock!",
+      "color": "#22CCFF",
+      "birthday": "10-04"
+    },
+    {
+      "name": "矢仓蓬咲",
+      "band": "一家Dumb Rock!",
+      "color": "#448888",
+      "birthday": "05-06",
+      "aliases": [
+        "矢仓莲咲"
+      ]
+    },
+    {
+      "name": "梅里千樱梨",
+      "band": "一家Dumb Rock!",
+      "color": "#FF55AA",
+      "birthday": "04-02"
+    },
+    {
+      "name": "四宫宁月",
+      "band": "一家Dumb Rock!",
+      "color": "#9999FF",
+      "birthday": "03-05"
+    },
+    {
+      "name": "纯田真奈",
+      "band": "sumimi",
+      "color": "#BBFF77",
+      "birthday": "10-02",
+      "name_ja": "純田 まな",
+      "name_en": "Mana Sumita",
+      "display_name": "MANA",
+      "color_note": "按用户指定采用 sumimi 组合黄绿色，反田叶月沿用此配色。"
+    }
+  ],
+  "voice_actors": [
+    {
+      "name": "爱美",
+      "birthday": "12-25",
+      "character": "户山香澄"
+    },
+    {
+      "name": "大冢纱英",
+      "birthday": "10-10",
+      "character": "花园多惠"
+    },
+    {
+      "name": "西本里美",
+      "birthday": "10-25",
+      "character": "牛込里美"
+    },
+    {
+      "name": "大桥彩香",
+      "birthday": "09-13",
+      "character": "山吹沙绫"
+    },
+    {
+      "name": "伊藤彩沙",
+      "birthday": "08-17",
+      "character": "市谷有咲"
+    },
+    {
+      "name": "佐仓绫音",
+      "birthday": "01-29",
+      "character": "美竹兰"
+    },
+    {
+      "name": "三泽纱千香",
+      "birthday": "01-13",
+      "character": "青叶摩卡"
+    },
+    {
+      "name": "加藤英美里",
+      "birthday": "11-26",
+      "character": "上原绯玛丽"
+    },
+    {
+      "name": "日笠阳子",
+      "birthday": "07-16",
+      "character": "宇田川巴"
+    },
+    {
+      "name": "金元寿子",
+      "birthday": "12-16",
+      "character": "羽泽鸫"
+    },
+    {
+      "name": "前岛亚美",
+      "birthday": "11-22",
+      "character": "丸山彩"
+    },
+    {
+      "name": "小泽亚李",
+      "birthday": "08-10",
+      "character": "冰川日菜"
+    },
+    {
+      "name": "上坂堇",
+      "birthday": "12-19",
+      "character": "白鹭千圣"
+    },
+    {
+      "name": "中上育实",
+      "birthday": "06-18",
+      "character": "大和麻弥"
+    },
+    {
+      "name": "秦佐和子",
+      "birthday": "09-14",
+      "character": "若宫伊芙"
+    },
+    {
+      "name": "相羽爱奈",
+      "birthday": "10-17",
+      "character": "凑友希那"
+    },
+    {
+      "name": "工藤晴香",
+      "birthday": "03-16",
+      "character": "冰川纱夜"
+    },
+    {
+      "name": "中岛由贵",
+      "birthday": "09-12",
+      "character": "今井莉莎"
+    },
+    {
+      "name": "远藤祐里香",
+      "birthday": "06-24",
+      "character": "今井莉莎"
+    },
+    {
+      "name": "樱川惠",
+      "birthday": "10-24",
+      "character": "宇田川亚子"
+    },
+    {
+      "name": "志崎桦音",
+      "birthday": "02-08",
+      "character": "白金燐子"
+    },
+    {
+      "name": "明坂聪美",
+      "birthday": "01-02",
+      "character": "白金燐子"
+    },
+    {
+      "name": "伊藤美来",
+      "birthday": "10-12",
+      "character": "弦卷心"
+    },
+    {
+      "name": "田所梓",
+      "birthday": "11-10",
+      "character": "濑田薰"
+    },
+    {
+      "name": "吉田有里",
+      "birthday": "08-18",
+      "character": "北泽育美"
+    },
+    {
+      "name": "丰田萌绘",
+      "birthday": "03-15",
+      "character": "松原花音"
+    },
+    {
+      "name": "黑泽朋世",
+      "birthday": "04-10",
+      "character": "米歇尔"
+    },
+    {
+      "name": "进藤天音",
+      "birthday": "04-20",
+      "character": "仓田真白"
+    },
+    {
+      "name": "直田姬奈",
+      "birthday": "04-17",
+      "character": "桐谷透子"
+    },
+    {
+      "name": "西尾夕香",
+      "birthday": "03-31",
+      "character": "广町七深"
+    },
+    {
+      "name": "mika",
+      "birthday": "06-24",
+      "character": "二叶筑紫"
+    },
+    {
+      "name": "Ayasa",
+      "birthday": "10-19",
+      "character": "八潮瑠唯"
+    },
+    {
+      "name": "Raychell",
+      "birthday": "01-13",
+      "character": "和奏瑞依"
+    },
+    {
+      "name": "小原莉子",
+      "birthday": "02-03",
+      "character": "朝日六花"
+    },
+    {
+      "name": "夏芽",
+      "birthday": "07-20",
+      "character": "佐藤益木"
+    },
+    {
+      "name": "仓知玲凤",
+      "birthday": "05-22",
+      "character": "鳰原令王那"
+    },
+    {
+      "name": "纺木吏佐",
+      "birthday": "07-05",
+      "character": "珠手知由"
+    },
+    {
+      "name": "羊宫妃那",
+      "birthday": "03-26",
+      "character": "高松灯"
+    },
+    {
+      "name": "立石凛",
+      "birthday": "07-10",
+      "character": "千早爱音"
+    },
+    {
+      "name": "青木阳菜",
+      "birthday": "01-05",
+      "character": "要乐奈"
+    },
+    {
+      "name": "小日向美香",
+      "birthday": "03-14",
+      "character": "长崎爽世"
+    },
+    {
+      "name": "林鼓子",
+      "birthday": "05-15",
+      "character": "椎名立希"
+    },
+    {
+      "name": "佐佐木李子",
+      "birthday": "11-10",
+      "character": "三角初华"
+    },
+    {
+      "name": "渡濑结月",
+      "birthday": "02-18",
+      "character": "若叶睦"
+    },
+    {
+      "name": "冈田梦以",
+      "birthday": "05-19",
+      "character": "八幡海铃"
+    },
+    {
+      "name": "米泽茜",
+      "birthday": "12-31",
+      "character": "祐天寺若麦"
+    },
+    {
+      "name": "高尾奏音",
+      "birthday": "09-10",
+      "character": "丰川祥子"
+    },
+    {
+      "name": "药师寺李有",
+      "birthday": "09-11",
+      "character": "汐见萤"
+    },
+    {
+      "name": "千春",
+      "birthday": "04-10",
+      "character": "伊泽枣"
+    },
+    {
+      "name": "结川麻希",
+      "birthday": "02-15",
+      "character": "琴平凪"
+    },
+    {
+      "name": "伊驹祐里惠",
+      "birthday": "02-24",
+      "character": "滨崎茉幌"
+    },
+    {
+      "name": "咲川雏乃",
+      "birthday": "01-22",
+      "character": "和泉朋花"
+    },
+    {
+      "name": "橘芽衣",
+      "birthday": "11-19",
+      "character": "须贺蕾叶"
+    },
+    {
+      "name": "凉泉樱花",
+      "birthday": "03-05",
+      "character": "马桥心玖"
+    },
+    {
+      "name": "花宫初奈",
+      "birthday": "10-24",
+      "character": "矢仓蓬咲"
+    },
+    {
+      "name": "菱川花菜",
+      "birthday": "05-19",
+      "character": "梅里千樱梨"
+    },
+    {
+      "name": "远野光",
+      "birthday": "03-05",
+      "character": "四宫宁月"
+    },
+    {
+      "name": "反田叶月",
+      "birthday": "02-28",
+      "character": "纯田真奈"
+    }
+  ]
+}

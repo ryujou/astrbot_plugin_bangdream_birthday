@@ -1,0 +1,14 @@
+name: astrbot_plugin_bangdream_birthday
+display_name: BanG Dream! 生日管理
+short_desc: 邦邦生日群名与应援色头像框，支持角色、声优和分群时区。
+desc: BanG Dream! 角色与声优生日群名、应援色头像框，支持独立分群设置和 XLSX、CSV 生日表导入。
+version: 2.1.0
+author: Ryujou
+support_platforms:
+  - aiocqhttp
+astrbot_version: ">=4.28,<5"
+repo: https://github.com/ryujou/astrbot_plugin_bangdream_birthday
+tags:
+  - BanG-Dream
+  - 生日
+  - 群管理

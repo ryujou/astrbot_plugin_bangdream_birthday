@@ -1,0 +1,312 @@
+{
+  "import_files": {
+    "type": "file",
+    "description": "导入生日表",
+    "default": [],
+    "file_types": [
+      "xlsx",
+      "csv"
+    ],
+    "hint": "上传 XLSX 或 UTF-8 CSV；列名用“姓名、生日”（例如 10-27），或“月份、日期、角色名”。空白生日跳过。在本群的“使用的导入文件”中填写文件名（含扩展名），保存配置生效。"
+  },
+  "group_rules": {
+    "type": "template_list",
+    "description": "分群生日设置",
+    "default": [],
+    "hint": "每个群添加一条设置。同一平台的群号不要重复。只对开启的群改名；生日结束后恢复第一个 @ 前的群名。",
+    "templates": {
+      "group": {
+        "name": "群生日设置",
+        "display_item": "group_id",
+        "items": {
+          "enabled": {
+            "type": "bool",
+            "description": "启用本群生日自动化",
+            "default": false,
+            "hint": "机器人须有修改群名的权限。"
+          },
+          "name_enabled": {
+            "type": "bool",
+            "description": "自动修改本群群名",
+            "default": true,
+            "hint": "关闭后保持当前群名，头像功能仍可独立开启。"
+          },
+          "platform_id": {
+            "type": "string",
+            "description": "QQ 平台实例 ID",
+            "default": "qq_private"
+          },
+          "avatar_enabled": {
+            "type": "bool",
+            "description": "自动添加生日应援色边框",
+            "default": false,
+            "hint": "角色及声优使用对应角色应援色，同日多人每小时轮换，非生日恢复原头像；首次保存原头像，关闭本项后恢复。"
+          },
+          "group_id": {
+            "type": "string",
+            "description": "群号",
+            "default": ""
+          },
+          "timezone": {
+            "type": "string",
+            "description": "本群生日时区",
+            "default": "Asia/Tokyo",
+            "options": [
+              "Asia/Tokyo",
+              "Asia/Shanghai",
+              "Asia/Hong_Kong",
+              "Asia/Taipei",
+              "Asia/Singapore",
+              "Europe/London",
+              "Europe/Berlin",
+              "America/New_York",
+              "America/Los_Angeles",
+              "Australia/Sydney",
+              "UTC"
+            ],
+            "hint": "默认东京时间。按本群所选时区的日期判断生日，跨日后 30 秒内更新；启动和保存配置后同步当天。"
+          },
+          "import_names": {
+            "type": "list",
+            "description": "使用的导入文件",
+            "default": [],
+            "hint": "填写本插件已上传文件的完整文件名，可填多个；与本插件内置生日表合并，相同姓名和日期去重。"
+          },
+          "use_builtin_calendar": {
+            "type": "bool",
+            "description": "使用 BanG Dream! 内置生日表",
+            "default": true,
+            "hint": "可关闭后仅使用本插件导入的生日表。"
+          },
+          "base_group_name": {
+            "type": "string",
+            "description": "基础群名",
+            "default": "",
+            "hint": "留空时首次同步记住当前群名第一个 @ 前的内容；自定义群名含 @ 时请明确填写。"
+          },
+          "birthday_name_format": {
+            "type": "string",
+            "description": "生日群名格式",
+            "default": "{base}@{names}{spacing}生日快乐",
+            "hint": "支持 {base}、{names}、{name}、{date}、{year}、{month}、{day}；{spacing} 在多人时为一个空格。"
+          },
+          "normal_name_format": {
+            "type": "string",
+            "description": "非生日群名格式",
+            "default": "{base}",
+            "hint": "支持与生日群名相同的变量。"
+          },
+          "name_separator": {
+            "type": "string",
+            "description": "多人姓名分隔符",
+            "default": "&",
+            "hint": "用于群名和头像中的 {names}。"
+          },
+          "date_format": {
+            "type": "string",
+            "description": "日期格式",
+            "default": "{year}.{month}.{day}",
+            "hint": "可用 {year}-{month:02d}-{day:02d}，不依赖操作系统日期格式。"
+          },
+          "greeting_template": {
+            "type": "string",
+            "description": "头像顶部祝福",
+            "default": "Happy Birthday",
+            "hint": "留空隐藏。支持 {name}、{names}、{display_name}、{character}、{date}、{year}、{month}、{day}。"
+          },
+          "date_template": {
+            "type": "string",
+            "description": "头像日期内容",
+            "default": "{date}",
+            "hint": "留空隐藏；支持同样的变量。"
+          },
+          "label_template": {
+            "type": "string",
+            "description": "头像底部主名字",
+            "default": "{display_name}",
+            "hint": "{display_name} 优先英文名，{name} 为原姓名，{character} 为声优对应角色。留空隐藏。"
+          },
+          "subtitle_template": {
+            "type": "string",
+            "description": "头像底部副文字",
+            "default": "",
+            "hint": "与主名字同弧排列，例如 · {name} 或 · 饰 {character}；留空隐藏。"
+          },
+          "font_family": {
+            "type": "string",
+            "description": "英文系统字体",
+            "default": "Arial, sans-serif",
+            "hint": "填写服务器已安装的字体族及后备字体，不上传字体文件也能运行。"
+          },
+          "cjk_font_family": {
+            "type": "string",
+            "description": "中文系统字体",
+            "default": "\"Noto Sans CJK SC\", \"Microsoft YaHei\", sans-serif",
+            "hint": "服务器须安装中文字体；仅配置字体名不会安装字体。"
+          },
+          "font_file": {
+            "type": "string",
+            "description": "自备英文字体文件",
+            "default": "",
+            "hint": "可填写已上传文件名，或本插件数据目录内相对路径；留空使用系统字体。"
+          },
+          "cjk_font_file": {
+            "type": "string",
+            "description": "自备中文字体文件",
+            "default": "",
+            "hint": "支持 TTF、OTF、WOFF、WOFF2。留空使用系统字体。"
+          },
+          "font_weight": {
+            "type": "int",
+            "description": "字体粗细",
+            "default": 800,
+            "hint": "100～900。"
+          },
+          "greeting_size": {
+            "type": "int",
+            "description": "祝福字号",
+            "default": 96,
+            "hint": "1～256；按圆环可用空间自动缩小。"
+          },
+          "date_size": {
+            "type": "int",
+            "description": "日期字号",
+            "default": 60,
+            "hint": "1～256。"
+          },
+          "label_size": {
+            "type": "int",
+            "description": "主名字字号",
+            "default": 124,
+            "hint": "1～256。"
+          },
+          "subtitle_size": {
+            "type": "int",
+            "description": "副文字字号",
+            "default": 64,
+            "hint": "1～256。"
+          },
+          "color": {
+            "type": "string",
+            "description": "主色覆盖",
+            "default": "",
+            "hint": "留空自动使用角色应援色；自定义用 #RRGGBB。未知姓名默认 #EE5577。"
+          },
+          "ring_colors": {
+            "type": "list",
+            "description": "三层圆环颜色",
+            "default": [],
+            "hint": "留空从主色派生；自定义时填写3个 #RRGGBB 色号，按外圈到内圈排列。"
+          },
+          "greeting_color": {
+            "type": "string",
+            "description": "祝福填色",
+            "default": "",
+            "hint": "留空使用应援色系深色，或填 #RRGGBB。"
+          },
+          "date_color": {
+            "type": "string",
+            "description": "日期填色",
+            "default": "",
+            "hint": "留空自动配色。"
+          },
+          "label_color": {
+            "type": "string",
+            "description": "主名字填色",
+            "default": "",
+            "hint": "留空自动配色。"
+          },
+          "subtitle_color": {
+            "type": "string",
+            "description": "副文字填色",
+            "default": "",
+            "hint": "留空自动配色。"
+          },
+          "outline_color": {
+            "type": "string",
+            "description": "文字描边颜色",
+            "default": "#FFFFFF",
+            "hint": "使用 #RRGGBB。"
+          },
+          "outline_width": {
+            "type": "int",
+            "description": "文字描边宽度",
+            "default": 8,
+            "hint": "0～24，0 为无描边。"
+          },
+          "background_color": {
+            "type": "string",
+            "description": "圆外背景色",
+            "default": "#FFFFFF",
+            "hint": "使用 #RRGGBB 或 transparent。"
+          },
+          "show_avatar": {
+            "type": "bool",
+            "description": "显示原头像",
+            "default": true,
+            "hint": "关闭时仅显示边框和文字。"
+          },
+          "avatar_radius": {
+            "type": "int",
+            "description": "原头像半径",
+            "default": 400,
+            "hint": "256～448；1024×1024画布，圆心固定在(512,512)，圆环随半径调整。"
+          },
+          "top_angle": {
+            "type": "int",
+            "description": "顶部内容旋转角度",
+            "default": 0,
+            "hint": "-180～180，围绕头像圆心旋转。"
+          },
+          "bottom_angle": {
+            "type": "int",
+            "description": "底部内容旋转角度",
+            "default": 0,
+            "hint": "-180～180，围绕头像圆心旋转。"
+          },
+          "decoration_file": {
+            "type": "string",
+            "description": "自备装饰图文件",
+            "default": "",
+            "hint": "默认关闭。填写已上传文件名或本插件数据目录内相对路径；装饰图显示在祝福与日期之间。"
+          },
+          "decoration_size": {
+            "type": "int",
+            "description": "装饰图尺寸",
+            "default": 56,
+            "hint": "8～192；自动限制在圆环内。"
+          },
+          "notify_enabled": {
+            "type": "bool",
+            "description": "修改成功后发送群提示",
+            "default": false,
+            "hint": "仅群名或头像实际改变且对应操作成功后发送一次；无变化不发送。"
+          },
+          "notify_template": {
+            "type": "string",
+            "description": "修改提示文字",
+            "default": "已更新{action}。",
+            "hint": "支持 {action}（群名/头像/群名和头像）、{group_name}（修改后群名）及日期姓名变量；留空不发送。提示按纯文本发送。"
+          }
+        }
+      }
+    }
+  },
+  "asset_files": {
+    "type": "file",
+    "description": "自备字体和装饰图",
+    "default": [],
+    "file_types": [
+      "ttf",
+      "otf",
+      "woff",
+      "woff2",
+      "png",
+      "jpg",
+      "jpeg",
+      "webp",
+      "svg"
+    ],
+    "hint": "可选。上传有权使用的资源后，在群设置填写完整文件名。插件不附带字体或星星素材。"
+  }
+}

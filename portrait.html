@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<title>生日头像框</title>
+<style>html,body{margin:0;width:1024px;height:1024px;background:transparent}#avatar>svg{display:block;width:1024px;height:1024px}</style>
+<div id="avatar"></div>
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,attrs={},text){const n=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))n.setAttribute(k,v);if(text!==undefined)n.textContent=text;return n;}
+function tone(color,hueShift,saturationShift,lightnessShift){
+  const [r,g,b]=color.match(/[a-f0-9]{2}/gi).map(v=>parseInt(v,16)/255);
+  const max=Math.max(r,g,b),min=Math.min(r,g,b),delta=max-min;
+  let h=0,l=(max+min)/2,s=delta===0?0:delta/(1-Math.abs(2*l-1));
+  if(delta)h=60*(max===r?((g-b)/delta+6)%6:max===g?(b-r)/delta+2:(r-g)/delta+4);
+  h=(h+hueShift+360)%360;s=Math.max(0,Math.min(1,s+saturationShift/100));l=Math.max(0,Math.min(1,l+lightnessShift/100));
+  const a=s*Math.min(l,1-l);
+  return '#'+[0,8,4].map(n=>{const k=(n+h/30)%12;return Math.round(255*(l-a*Math.max(-1,Math.min(k-3,9-k,1)))).toString(16).padStart(2,'0');}).join('');
+}
+function textInk(color,hueShift,saturationShift,lightnessShift){
+  let ink,luminance;
+  do{
+    ink=tone(color,hueShift,saturationShift,lightnessShift);
+    const linear=ink.match(/[a-f0-9]{2}/gi).map(v=>{const c=parseInt(v,16)/255;return c<=0.04045?c/12.92:((c+0.055)/1.055)**2.4;});
+    luminance=linear[0]*0.2126+linear[1]*0.7152+linear[2]*0.0722;
+    lightnessShift-=2;
+  }while((1.05/(luminance+0.05))<4.5);
+  return ink;
+}
+
+window.render=async function(image,names,o){
+  const palette=o.ring_colors.length?o.ring_colors:[o.color,tone(o.color,-25,-12,8),tone(o.color,-5,-8,-18)];
+  const inks=[textInk(o.color,0,-12,-22),textInk(o.color,-35,-8,-22)];
+  const outer=504,photoRadius=o.avatar_radius,band=outer-photoRadius;
+  const svg=el('svg',{xmlns:NS,viewBox:'0 0 1024 1024',role:'img','aria-label':names.join('、')+' '+o.date});
+  const defs=el('defs');svg.append(defs);
+  const photoClip=el('clipPath',{id:'photo'});photoClip.append(el('circle',{cx:512,cy:512,r:photoRadius}));defs.append(photoClip);
+  if(o.background_color!=='transparent')svg.append(el('rect',{id:'background',width:1024,height:1024,fill:o.background_color}));
+  const ring=el('g',{id:'rings',fill:'none'});
+  let edge=outer;
+  [24,56,24].forEach((weight,i)=>{const width=band*weight/104;ring.append(el('circle',{cx:512,cy:512,r:edge-width/2,stroke:palette[i],'stroke-width':width}));edge-=width;});
+  svg.append(ring);
+  if(image&&o.show_avatar){
+    const original=new Image();original.src=image;await original.decode();
+    svg.insertBefore(el('image',{id:'original-avatar',href:image,x:512-photoRadius,y:512-photoRadius,width:photoRadius*2,height:photoRadius*2,preserveAspectRatio:'xMidYMid slice','clip-path':'url(#photo)'}),ring);
+  }
+  const fontNames={font_file:'Birthday Custom Latin',cjk_font_file:'Birthday Custom CJK'};
+  for(const [key,family] of Object.entries(fontNames)){
+    if(o.asset_data[key]){
+      const font=new FontFace(family,'url("'+o.asset_data[key]+'")',{weight:String(o.font_weight)});
+      await font.load();document.fonts.add(font);
+    }
+  }
+  const latin=(o.asset_data.font_file?'"Birthday Custom Latin",':'')+o.font_family;
+  const chinese=(o.asset_data.cjk_font_file?'"Birthday Custom CJK",':'')+o.cjk_font_family;
+  const family=text=>/[\u3400-\u9fff]/.test(text)?chinese:latin;
+  const style={stroke:o.outline_color,'stroke-width':o.outline_width,'stroke-linejoin':'round','paint-order':'stroke fill','font-weight':o.font_weight};
+  const top=el('g',{id:'top-content',...style,transform:'rotate('+o.top_angle+' 512 512)'});
+  const bottom=el('g',{id:'bottom-content',...style,transform:'rotate('+o.bottom_angle+' 512 512)'});
+  svg.append(top,bottom);document.getElementById('avatar').replaceChildren(svg);
+  const makeText=(value,size,color,id,parent)=>{
+    if(!value)return null;
+    const text=el('text',{id,fill:color,'font-family':family(value),'font-size':size},value);parent.append(text);return text;
+  };
+  const greeting=makeText(o.greeting,o.greeting_size,o.greeting_color||inks[0],'greeting',top);
+  const date=makeText(o.date,o.date_size,o.date_color||inks[1],'date-label',top);
+  const label=makeText(o.label,o.label_size,o.label_color||inks[0],'name-label',bottom);
+  const subtitle=makeText(o.subtitle,o.subtitle_size,o.subtitle_color||inks[1],'subtitle',bottom);
+  await Promise.all([greeting,date,label,subtitle].filter(Boolean).map(t=>document.fonts.load(o.font_weight+' '+t.getAttribute('font-size')+'px '+t.getAttribute('font-family'),t.textContent)));
+  await document.fonts.ready;
+  const margin=8+o.outline_width/2;
+  const fitHeight=text=>{
+    if(!text)return;
+    const height=text.getBBox().height;
+    if(height>band-2*margin)text.setAttribute('font-size',+text.getAttribute('font-size')*(band-2*margin)/height);
+  };
+  [greeting,date,label,subtitle].forEach(fitHeight);
+  const topTexts=[greeting,date].filter(Boolean),bottomTexts=[label,subtitle].filter(Boolean);
+  const descent=texts=>Math.max(0,...texts.map(t=>{const b=t.getBBox();return b.y+b.height;}));
+  let topRadius=photoRadius+margin+descent(topTexts);
+  let bottomRadius=outer-margin-descent(bottomTexts);
+  const decoration=o.asset_data.decoration_file;
+  const decorationSize=decoration?Math.min(o.decoration_size,band-2*margin):0;
+  const topParts=[greeting,decoration?{decoration:true,width:decorationSize}:null,date].filter(Boolean);
+  const place=(parts,texts,radius,isTop,id,parent,maxAngle)=>{
+    if(!parts.length)return;
+    const gap=18;
+    const width=parts.reduce((sum,p)=>sum+(p.decoration?p.width:p.getComputedTextLength()),0)+gap*(parts.length-1);
+    const scale=Math.min(1,radius*maxAngle*Math.PI/180/Math.max(1,width));
+    for(const text of texts)text.setAttribute('font-size',+text.getAttribute('font-size')*scale);
+    for(const part of parts)if(part.decoration)part.width*=scale;
+    radius=isTop?photoRadius+margin+descent(texts):outer-margin-descent(texts);
+    defs.append(el('path',{id,d:'M '+(512-radius)+' 512 A '+radius+' '+radius+' 0 0 '+(isTop?1:0)+' '+(512+radius)+' 512'}));
+    const widths=parts.map(p=>p.decoration?p.width:p.getComputedTextLength());
+    const total=widths.reduce((a,b)=>a+b,0)+gap*scale*(parts.length-1);
+    let offset=(Math.PI*radius-total)/2;
+    parts.forEach((part,i)=>{
+      const center=offset+widths[i]/2;
+      if(part.decoration){
+        const angle=center/radius-Math.PI/2;
+        const r=photoRadius+band/2;
+        parent.append(el('image',{id:'decoration',href:decoration,width:part.width,height:part.width,preserveAspectRatio:'xMidYMid meet',transform:'translate('+(512+r*Math.sin(angle))+' '+(512-r*Math.cos(angle))+') rotate('+(angle*180/Math.PI)+') translate('+(-part.width/2)+' '+(-part.width/2)+')'}));
+      }else{
+        const path=el('textPath',{href:'#'+id,startOffset:center,'text-anchor':'middle'},part.textContent);
+        part.replaceChildren(path);
+      }
+      offset+=widths[i]+gap*scale;
+    });
+  };
+  place(topParts,topTexts,topRadius,true,'birthday-arc',top,166);
+  place(bottomTexts,bottomTexts,bottomRadius,false,'name-arc',bottom,125);
+  if(decoration){const images=[...svg.querySelectorAll('image')];await Promise.all(images.map(node=>{const img=new Image();img.src=node.getAttribute('href');return img.decode();}));}
+  return new XMLSerializer().serializeToString(svg);
+};
+</script>
+</html>
