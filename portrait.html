@@ -46,6 +46,7 @@ window.render=async function(image,names,o){
   const fontNames={font_file:'Birthday Custom Latin',cjk_font_file:'Birthday Custom CJK'};
   for(const [key,family] of Object.entries(fontNames)){
     if(o.asset_data[key]){
+      defs.append(el('style',{},'@font-face{font-family:"'+family+'";src:url("'+o.asset_data[key]+'");font-weight:'+o.font_weight+';}'));
       const font=new FontFace(family,'url("'+o.asset_data[key]+'")',{weight:String(o.font_weight)});
       await font.load();document.fonts.add(font);
     }
@@ -64,19 +65,27 @@ window.render=async function(image,names,o){
   const greeting=makeText(o.greeting,o.greeting_size,o.greeting_color||inks[0],'greeting',top);
   const date=makeText(o.date,o.date_size,o.date_color||inks[1],'date-label',top);
   const label=makeText(o.label,o.label_size,o.label_color||inks[0],'name-label',bottom);
+  if(label)label.setAttribute('letter-spacing',o.label_spacing);
   const subtitle=makeText(o.subtitle,o.subtitle_size,o.subtitle_color||inks[1],'subtitle',bottom);
   await Promise.all([greeting,date,label,subtitle].filter(Boolean).map(t=>document.fonts.load(o.font_weight+' '+t.getAttribute('font-size')+'px '+t.getAttribute('font-family'),t.textContent)));
   await document.fonts.ready;
   const margin=8+o.outline_width/2;
+  const measure=document.createElement('canvas').getContext('2d');
+  const ink=text=>{
+    measure.font=o.font_weight+' '+text.getAttribute('font-size')+'px '+text.getAttribute('font-family');
+    return measure.measureText(text.textContent);
+  };
   const fitHeight=text=>{
     if(!text)return;
-    const height=text.getBBox().height;
-    if(height>band-2*margin)text.setAttribute('font-size',+text.getAttribute('font-size')*(band-2*margin)/height);
+    const box=ink(text);
+    const height=box.actualBoundingBoxAscent+box.actualBoundingBoxDescent;
+    const available=text===label&&/[\u3400-\u9fff]/.test(text.textContent)?band-margin:band-2*margin;
+    if(height>available)text.setAttribute('font-size',+text.getAttribute('font-size')*available/height);
   };
   [greeting,date,label,subtitle].forEach(fitHeight);
   const topTexts=[greeting,date].filter(Boolean),bottomTexts=[label,subtitle].filter(Boolean);
-  const descent=texts=>Math.max(0,...texts.map(t=>{const b=t.getBBox();return b.y+b.height;}));
-  let topRadius=photoRadius+margin+descent(topTexts);
+  const descent=texts=>Math.max(0,...texts.map(t=>{return /[\u3400-\u9fff]/.test(t.textContent)?0:ink(t).actualBoundingBoxDescent;}));
+  let topRadius=photoRadius+margin+10+descent(topTexts);
   let bottomRadius=outer-margin-descent(bottomTexts);
   const decoration=o.asset_data.decoration_file;
   const decorationSize=decoration?Math.min(o.decoration_size,band-2*margin):0;
@@ -88,7 +97,7 @@ window.render=async function(image,names,o){
     const scale=Math.min(1,radius*maxAngle*Math.PI/180/Math.max(1,width));
     for(const text of texts)text.setAttribute('font-size',+text.getAttribute('font-size')*scale);
     for(const part of parts)if(part.decoration)part.width*=scale;
-    radius=isTop?photoRadius+margin+descent(texts):outer-margin-descent(texts);
+    radius=isTop?photoRadius+margin+10+descent(texts):outer-margin-descent(texts);
     defs.append(el('path',{id,d:'M '+(512-radius)+' 512 A '+radius+' '+radius+' 0 0 '+(isTop?1:0)+' '+(512+radius)+' 512'}));
     const widths=parts.map(p=>p.decoration?p.width:p.getComputedTextLength());
     const total=widths.reduce((a,b)=>a+b,0)+gap*scale*(parts.length-1);

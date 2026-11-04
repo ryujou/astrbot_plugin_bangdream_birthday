@@ -14,7 +14,7 @@ from astrbot.api.star import Context, Star, StarTools
 from .presentation import DEFAULTS, load_settings, render_options, template_values
 
 PLUGIN_ID = "astrbot_plugin_bangdream_birthday"
-FRAME_VERSION = "configurable-20261104"
+FRAME_VERSION = "chinese-star-20261104"
 
 
 def load_portrait_people():

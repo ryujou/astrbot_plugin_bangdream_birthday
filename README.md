@@ -109,9 +109,9 @@ Linux 缺少 Chromium 系统库时，可由有系统管理权限的用户执行 
 
 ## 外观和修改提示
 
-以下配置按群独立设置。默认使用系统无衬线字体、角色应援色、白描边，不显示装饰图。文字为空时不显示对应文字；头像始终保持圆心居中，文字自动缩小以适应圆环。
+以下配置按群独立设置。默认使用 Cooper Black 英文字体、荆南波波黑中文字体、角色应援色与白描边，并显示星星拖尾。底部使用中文姓名，字号106、字间距6px，长姓名自动缩小。文字为空时不显示对应文字；头像始终保持圆心居中，文字自动缩小以适应圆环。
 
-通过插件级 `asset_files` 上传自己的字体或装饰图，然后在该群 `font_file`、`cjk_font_file` 或 `decoration_file` 填写完整文件名。也可放入本插件持久化数据目录并填写相对路径。字体支持 TTF/OTF/WOFF/WOFF2，装饰图支持 PNG/JPEG/WEBP/SVG；文件不随插件源码分发。
+通过插件级 `asset_files` 上传自己的字体或装饰图，然后在该群 `font_file`、`cjk_font_file` 或 `decoration_file` 填写完整文件名。也可放入本插件持久化数据目录并填写相对路径。字体支持 TTF/OTF/WOFF/WOFF2，装饰图支持 PNG/JPEG/WEBP/SVG；内置素材使用 builtin: 前缀；将文件配置清空即可使用系统字体或关闭装饰图。
 
 模板变量：`{base}` 基础群名、`{name}` 首位姓名、`{names}` 全部姓名、`{display_name}` 显示名、`{character}` 对应角色、`{date}` 格式化日期、`{year}`、`{month}`、`{day}`、`{spacing}` 多人时空格。日期格式例如 `{year}.{month:02d}.{day:02d}`。`date_format` 仅接受年月日变量。
 
@@ -128,16 +128,17 @@ Linux 缺少 Chromium 系统库时，可由有系统管理权限的用户执行 
 | `date_format` | `"{year}.{month}.{day}"` |
 | `greeting_template` | `"Happy Birthday"` |
 | `date_template` | `"{date}"` |
-| `label_template` | `"{display_name}"` |
+| `label_template` | `"{names}"` |
 | `subtitle_template` | `""` |
 | `font_family` | `"Arial, sans-serif"` |
 | `cjk_font_family` | `"\"Noto Sans CJK SC\", \"Microsoft YaHei\", sans-serif"` |
-| `font_file` | `""` |
-| `cjk_font_file` | `""` |
-| `font_weight` | `800` |
+| `font_file` | `"builtin:CooperBlack.ttf"` |
+| `cjk_font_file` | `"builtin:KNBobohei-Bold.ttf"` |
+| `font_weight` | `900` |
 | `greeting_size` | `96` |
 | `date_size` | `60` |
-| `label_size` | `124` |
+| `label_size` | `106` |
+| `label_spacing` | `6` |
 | `subtitle_size` | `64` |
 | `color` | `""` |
 | `ring_colors` | `[]` |
@@ -152,10 +153,12 @@ Linux 缺少 Chromium 系统库时，可由有系统管理权限的用户执行 
 | `avatar_radius` | `400` |
 | `top_angle` | `0` |
 | `bottom_angle` | `0` |
-| `decoration_file` | `""` |
+| `decoration_file` | `"builtin:star-trail.svg"` |
 | `decoration_size` | `56` |
 | `notify_enabled` | `false` |
 | `notify_template` | `"已更新{action}。"` |
+
+升级不会覆盖已保存的配置。已有安装若保留空字体、空装饰或英文显示名，需将对应项改为上述默认值。
 
 外观配置或本地素材改变后，下次加载配置会刷新当天头像。颜色使用 #RRGGBB；空色号跟随角色配色，ring_colors 留空自动生成三色。
 
@@ -215,7 +218,7 @@ ruff format --check main.py presentation.py tests
 
 ## 来源与许可
 
-非官方社区工具，与 BanG Dream! 官方无隶属关系。生日、角色色号与声优关系的来源记录在 [character_colors.json](character_colors.json)。默认使用系统无衬线字体，不附带字体文件或星星素材。
+非官方社区工具，与 BanG Dream! 官方无隶属关系。生日、角色色号与声优关系的来源记录在 [character_colors.json](character_colors.json)。内置字体与星星素材的来源和许可范围见第三方资源说明。
 
 原创代码与原创文档采用 [MIT License](LICENSE)，允许使用、修改和再分发，需保留许可证及版权声明。MIT 同样允许商业使用；本项目的非盈利粉丝用途不构成对代码许可证的额外限制。
 

@@ -284,14 +284,16 @@ class PresentationTests(unittest.IsolatedAsyncioTestCase):
         self.addCleanup(self.temp.cleanup)
         self.data = Path(self.temp.name)
 
-    def test_default_has_no_external_assets(self):
+    def test_default_uses_bundled_fonts_and_star(self):
         settings = birthday.load_settings({}, self.data)
-        self.assertEqual(settings["assets"], {})
-        self.assertEqual(settings["decoration_file"], "")
+        self.assertEqual(
+            set(settings["assets"]), {"font_file", "cjk_font_file", "decoration_file"}
+        )
+        self.assertEqual(settings["decoration_file"], "builtin:star-trail.svg")
         options = birthday.render_options(
             ["千石由乃"], date(2026, 11, 4), birthday.PORTRAIT_PEOPLE, settings
         )
-        self.assertEqual(options["label"], "YUNO")
+        self.assertEqual(options["label"], "千石由乃")
         self.assertEqual(options["date"], "2026.11.4")
         self.assertEqual(options["color"], "#EE5577")
         self.assertNotIn("Cooper", options["font_family"])
@@ -407,7 +409,7 @@ class PresentationTests(unittest.IsolatedAsyncioTestCase):
                 client, rule, date(2026, 11, 4), self.data
             )
             rule["presentation"] = birthday.load_settings(
-                {"label_template": "{name}"}, self.data
+                {"label_template": "{display_name}"}, self.data
             )
             await birthday.sync_group_portrait(
                 client, rule, date(2026, 11, 4), self.data

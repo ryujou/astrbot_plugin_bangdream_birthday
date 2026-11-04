@@ -25,6 +25,7 @@ KEYS = (
     "greeting_size",
     "date_size",
     "label_size",
+    "label_spacing",
     "subtitle_size",
     "color",
     "ring_colors",
@@ -115,6 +116,7 @@ def load_settings(rule, data_dir, uploaded=()):
         raise ValueError("ring_colors 须为空或包含三个 #RRGGBB 色号")
     limits = {
         "font_weight": (100, 900),
+        "label_spacing": (0, 24),
         "avatar_radius": (256, 448),
         "outline_width": (0, 24),
         "top_angle": (-180, 180),
@@ -142,9 +144,19 @@ def load_settings(rule, data_dir, uploaded=()):
         name = settings[key]
         if not name:
             continue
-        path = files.get(name, data_dir / name).resolve()
-        if not path.is_relative_to(data_dir.resolve()):
-            raise ValueError("字体或装饰图必须位于本插件数据目录内")
+        if name.startswith("builtin:"):
+            bundled = {
+                "font_file": "CooperBlack.ttf",
+                "cjk_font_file": "KNBobohei-Bold.ttf",
+                "decoration_file": "star-trail.svg",
+            }
+            if name != "builtin:" + bundled[key]:
+                raise ValueError("未知的内置素材")
+            path = ROOT / "assets" / bundled[key]
+        else:
+            path = files.get(name, data_dir / name).resolve()
+            if not path.is_relative_to(data_dir.resolve()):
+                raise ValueError("字体或装饰图必须位于本插件数据目录内")
         allowed = (
             {".png", ".jpg", ".jpeg", ".webp", ".svg"}
             if key == "decoration_file"

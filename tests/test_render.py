@@ -60,7 +60,7 @@ async def main():
                 assert result == {
                     "overlap": 0,
                     "outside": 0,
-                    "decoration": False,
+                    "decoration": True,
                     "color": expected,
                 }, (name, result)
             image = await page.evaluate("""()=>{

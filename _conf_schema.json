@@ -123,7 +123,7 @@
           "label_template": {
             "type": "string",
             "description": "头像底部主名字",
-            "default": "{display_name}",
+            "default": "{names}",
             "hint": "{display_name} 优先英文名，{name} 为原姓名，{character} 为声优对应角色。留空隐藏。"
           },
           "subtitle_template": {
@@ -147,19 +147,19 @@
           "font_file": {
             "type": "string",
             "description": "自备英文字体文件",
-            "default": "",
+            "default": "builtin:CooperBlack.ttf",
             "hint": "可填写已上传文件名，或本插件数据目录内相对路径；留空使用系统字体。"
           },
           "cjk_font_file": {
             "type": "string",
             "description": "自备中文字体文件",
-            "default": "",
+            "default": "builtin:KNBobohei-Bold.ttf",
             "hint": "支持 TTF、OTF、WOFF、WOFF2。留空使用系统字体。"
           },
           "font_weight": {
             "type": "int",
             "description": "字体粗细",
-            "default": 800,
+            "default": 900,
             "hint": "100～900。"
           },
           "greeting_size": {
@@ -177,7 +177,7 @@
           "label_size": {
             "type": "int",
             "description": "主名字字号",
-            "default": 124,
+            "default": 106,
             "hint": "1～256。"
           },
           "subtitle_size": {
@@ -267,8 +267,8 @@
           "decoration_file": {
             "type": "string",
             "description": "自备装饰图文件",
-            "default": "",
-            "hint": "默认关闭。填写已上传文件名或本插件数据目录内相对路径；装饰图显示在祝福与日期之间。"
+            "default": "builtin:star-trail.svg",
+            "hint": "默认使用内置星星。留空关闭，或填写已上传文件名、本插件数据目录内相对路径；装饰图显示在祝福与日期之间。"
           },
           "decoration_size": {
             "type": "int",
@@ -287,6 +287,12 @@
             "description": "修改提示文字",
             "default": "已更新{action}。",
             "hint": "支持 {action}（群名/头像/群名和头像）、{group_name}（修改后群名）及日期姓名变量；留空不发送。提示按纯文本发送。"
+          },
+          "label_spacing": {
+            "description": "底部名字字间距（像素）",
+            "type": "int",
+            "default": 6,
+            "hint": "默认6，0为普通字距。"
           }
         }
       }
@@ -307,6 +313,6 @@
       "webp",
       "svg"
     ],
-    "hint": "可选。上传有权使用的资源后，在群设置填写完整文件名。插件不附带字体或星星素材。"
+    "hint": "可选。默认使用内置字体与星星；上传自己的资源后，在群设置填写完整文件名即可替换。"
   }
 }
