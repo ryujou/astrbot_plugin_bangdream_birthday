@@ -13,7 +13,7 @@
     "type": "template_list",
     "description": "分群生日设置",
     "default": [],
-    "hint": "每个群添加一条设置。同一平台的群号不要重复。只对开启的群改名；生日结束后恢复第一个 @ 前的群名。",
+    "hint": "添加群规则并填写平台实例 ID 与群号即可使用内置生日表和默认生日头像；其他选项可保持默认。",
     "templates": {
       "group": {
         "name": "群生日设置",
@@ -22,7 +22,7 @@
           "enabled": {
             "type": "bool",
             "description": "启用本群生日自动化",
-            "default": false,
+            "default": true,
             "hint": "机器人须有修改群名的权限。"
           },
           "name_enabled": {
@@ -39,7 +39,7 @@
           "avatar_enabled": {
             "type": "bool",
             "description": "自动添加生日应援色边框",
-            "default": false,
+            "default": true,
             "hint": "角色及声优使用对应角色应援色，同日多人每小时轮换，非生日恢复原头像；首次保存原头像，关闭本项后恢复。"
           },
           "group_id": {

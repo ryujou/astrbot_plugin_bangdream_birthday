@@ -149,9 +149,11 @@ def load_group_rules(config, data_dir):
     rules = []
     seen = set()
     for entry in config.get("group_rules", []):
-        if not entry.get("enabled", False):
+        if not entry.get("enabled", True):
             continue
         rule = dict(entry)
+        rule.setdefault("platform_id", "qq_private")
+        rule.setdefault("avatar_enabled", True)
         rule["group_id"] = int(rule["group_id"])
         scope = (rule["platform_id"], rule["group_id"])
         if scope in seen:
