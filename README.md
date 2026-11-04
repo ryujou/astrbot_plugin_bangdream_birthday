@@ -4,7 +4,7 @@
 
 **AstrBot ≥4.28、<5 · OneBot v11 / aiocqhttp · 无需配置大模型**
 
-[安装](#安装) · [快速开始](#快速开始) · [配置](#配置) · [常见问题](#常见问题)
+[实际效果](#实际效果与修改对照) · [安装](#安装) · [快速开始](#快速开始) · [配置](#配置) · [常见问题](#常见问题)
 
 ## 功能
 
@@ -16,6 +16,29 @@
 - 可导入 XLSX、UTF-8 CSV 补充或替代内置生日表。
 
 本插件通过后台配置和定时任务运行，**没有聊天指令；可按群开启修改后的文字提示，默认关闭**。独立安装即可运行，不依赖蔚蓝档案插件。
+
+## 实际效果与修改对照
+
+以下为插件实际渲染截图，使用纯色背景作为匿名示例头像，不包含真实群 Logo 或群信息。点击图片可查看原尺寸。
+
+| 英文名配置 | 中文名配置（默认） |
+| --- | --- |
+| [![纯色背景英文名效果](docs/images/english.png)](docs/images/english.png) | [![纯色背景中文名效果](docs/images/chinese.png)](docs/images/chinese.png) |
+
+中文姓名效果采用以下配置。字体、星星、日期与配色都可以在每群设置中调整。
+
+| 修改内容 | 配置 | 图中效果 |
+| --- | --- | --- |
+| 底部中文名 | `label_template = {names}` | 显示“千石由乃”；`{display_name}` 可使用数据表中的显示名，如 YUNO |
+| 名字大小 | `label_size = 106` | 设置最大字号，长姓名按圆环空间自动缩小 |
+| 名字间距 | `label_spacing = 6` | 字间距略微拉开 |
+| 中文字体 | `cjk_font_file = builtin:KNBobohei-Bold.ttf` | 使用荆南波波黑 |
+| 英文祝福字体 | `font_file = builtin:CooperBlack.ttf` | 顶部 Happy Birthday 使用 Cooper Black |
+| 星星拖尾 | `decoration_file = builtin:star-trail.svg` | 显示在祝福与日期之间；留空关闭 |
+| 日期格式 | `date_format = {year}.{month}.{day}` | 显示 2026.11.4 |
+| 应援色与白描边 | `color` 留空，`outline_color = #FFFFFF` | 自动使用当天角色配色，文字带白色描边 |
+
+操作路径：插件配置 → 分群生日设置 → 对应群 → 调整上述字段 → 保存。当天存在生日时，外观配置改变后会刷新头像。`notify_enabled` 关闭时不发送修改提示。
 
 ## 安装
 
