@@ -338,11 +338,19 @@ class BanGDreamBirthdayPlugin(Star):
                 data = StarTools.get_data_dir(PLUGIN_ID)
                 base_path = data / "group_names" / platform_id / f"{group_id}.txt"
                 if not settings["base_group_name"]:
-                    settings["base_group_name"] = (
-                        base_path.read_text(encoding="utf-8")
-                        if base_path.exists()
-                        else current_name.partition("@")[0]
-                    )
+                    if (
+                        settings["birthday_name_format"]
+                        == DEFAULTS["birthday_name_format"]
+                        and settings["normal_name_format"]
+                        == DEFAULTS["normal_name_format"]
+                    ):
+                        settings["base_group_name"] = current_name.partition("@")[0]
+                    else:
+                        settings["base_group_name"] = (
+                            base_path.read_text(encoding="utf-8")
+                            if base_path.exists()
+                            else current_name.partition("@")[0]
+                        )
                 target_name = group_name_for_day(
                     current_name, today, rule["birthdays"], settings
                 )
